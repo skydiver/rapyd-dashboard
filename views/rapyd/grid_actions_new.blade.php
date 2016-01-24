@@ -7,7 +7,7 @@
 
     @if(isset($actions['top']))
         @foreach($actions['top'] as $extra)
-            <a {!! isset($extra['url']) ? 'href="'.$extra['url'].'"' : '' !!} class="btn btn-xs btn btn-{{ $extra['btn'] or 'primary' }} {{ $extra['class'] or ''}}"><i class="icon-{{ $extra['icon'] or 'circle' }}"></i>&nbsp;&nbsp;{{ $extra['label'] }}</a>
+            <a {!! isset($extra['url']) ? 'href="'.$extra['url'].'"' : '' !!} class="btn btn-xs btn btn-{{ $extra['btn'] or 'primary' }} {{ $extra['class'] or ''}}"><i class="{{ $extra['icon'] or 'circle' }}"></i>&nbsp;&nbsp;{{ $extra['label'] }}</a>
         @endforeach
     @endif
 
