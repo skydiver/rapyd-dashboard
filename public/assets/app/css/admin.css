@@ -1,0 +1,14 @@
+/* OVERWRITE */
+.dropdown-menu   { padding:4px; box-shadow:0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12); }
+.dropdown-menu a { border-radius:4px; }
+header .user-menu .dropdown-menu { right:4px !important; padding:4px !important; }
+
+.footer-pagination             { text-align:center; }
+.data-table .grid-actions      { width:1%; padding-left:10px; padding-right:10px; text-align:center; white-space:nowrap; }
+.data-table td.grid-actions a  { margin:0 2px; }
+.data-table .empty             { padding:40px 0; text-align:center; }
+
+#rapyd-form .form-group             { margin-left:0; margin-right:0; }
+#rapyd-form .btn-toolbar            { margin:0; text-align:center; }
+#rapyd-form .btn-toolbar .pull-left { float:none !important; }
+#rapyd-form .btn-toolbar input      { float:none; }

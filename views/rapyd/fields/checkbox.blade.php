@@ -1,0 +1,1 @@
+{!! Form::checkbox('slected-|field|', "|field|", false) !!}

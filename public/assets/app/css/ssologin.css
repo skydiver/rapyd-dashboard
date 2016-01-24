@@ -1,0 +1,2 @@
+.google a       { display:block; width:191px; height:46px; margin:auto; background:url('../imgs/btn_google_signin_dark_normal_web.png'); }
+.google a:hover { background:url('../imgs/btn_google_signin_dark_focus_web.png'); }

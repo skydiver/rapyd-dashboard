@@ -1,0 +1,1 @@
+<a href="{{ $url or '' }}|field|"{{ isset($blank) ? ' target="_blank"' : '' }}>|field|</a>

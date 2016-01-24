@@ -1,0 +1,22 @@
+{
+    "name": "skydiver/rapyd-dashboard",
+    "description": "Backend dashboard for Laravel 5",
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.*",
+        "zofe/rapyd": "2.1.*",
+        "laravel/socialite": "^2.0",
+        "skydiver/laravel-adminer": "~4.2.0"
+    },
+    "authors": [
+        {
+            "name": "Martin M."
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Skydiver\\RapydDashboard\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
