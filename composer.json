@@ -1,6 +1,8 @@
 {
     "name": "skydiver/rapyd-dashboard",
     "description": "Backend dashboard for Laravel 5",
+    "keywords": ["Dashboard", "Backend", "rapyd", "AdminLTE", "laravel"],
+    "license": "MIT",
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "5.*",
