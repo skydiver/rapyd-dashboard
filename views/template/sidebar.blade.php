@@ -4,7 +4,7 @@
         <ul class="sidebar-menu">
             <li class="header">DASHBOARD</li>
             <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
-                <a href="{{ action('\skydiver\RapydDashboard\Controllers\DashboardController@getIndex') }}">
+                <a href="{{ action('\Skydiver\RapydDashboard\Controllers\DashboardController@getIndex') }}">
                     <i class="fa fa-home"></i>
                     <span>Home</span>
                 </a>
