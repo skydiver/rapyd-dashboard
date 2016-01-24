@@ -23,6 +23,13 @@ Skydiver\RapydDashboard\RapydDashboardServiceProvider::class,
 
 ---
 
+**publish the package's assets to public folder***
+```
+$ php artisan vendor:publish
+```
+
+---
+
 **config/auth.php**
 ```php
 'model' => Skydiver\RapydDashboard\Models\User::class,
