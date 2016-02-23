@@ -10,7 +10,11 @@
                 </a>
             </li>
             @foreach(config('rapyd-dashboard.sidebar') as $label => $menu)
-                @include('rapyd-dashboard::template.sidebar_item', ['data' => $menu])
+                @if(isset($menu['header']) && $menu['header'] === true)
+                    <li class="header">{{ $label }}</li>
+                @else
+                    @include('rapyd-dashboard::template.sidebar_item', ['data' => $menu])
+                @endif
             @endforeach
             <li class="header">EXTRAS</li>
             @foreach(config('rapyd-dashboard.sidebar_extra') as $label => $menu)

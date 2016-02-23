@@ -13,6 +13,10 @@
                 'icon'   => 'icon-gear',
                 'active' => 'dashboard/demo'
             ], */
+
+         /* 'Just a header' => [
+                'header' => true
+            ], */
         ],
 
         # EXTRA SIDEBAR ITEMS
