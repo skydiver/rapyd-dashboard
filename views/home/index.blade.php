@@ -1,7 +1,18 @@
 @extends('rapyd-dashboard::template.master')
 
-@section('content')
+@if (config('rapyd-dashboard.logo'))
+@section('custom_css')
+<style>
+    .content-wrapper {
+        background-image:url('{{ config('rapyd-dashboard.logo') }}');
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:50%;
+    }
+</style>
+@endsection
+@endif
 
-    DEMO
+@section('content')
 
 @endsection

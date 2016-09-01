@@ -5,6 +5,9 @@
         # DASHBOARD TITLE
         'title' => 'Rapyd Dashboard',
 
+        # CUSTOM LOGO ON HOME
+        # 'logo' => asset('imgs/logo.png'),
+
         # SIDEBAR ITEMS
         'sidebar' => [
          /* 'BUTTON LABEL' => [
