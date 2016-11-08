@@ -1,5 +1,5 @@
 # Rapyd Dashboard
-Backend dashboard for Laravel 5
+Backend dashboard for Laravel 5.3
 
 Rapyd + AdminLTE
 
