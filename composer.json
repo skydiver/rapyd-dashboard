@@ -8,7 +8,8 @@
         "laravel/framework": "5.3.*",
         "zofe/rapyd": "2.2.*",
         "laravel/socialite": "^2.0",
-        "skydiver/laravel-adminer": "~4.2.0"
+        "skydiver/laravel-adminer": "~4.2.0",
+        "thomaswelton/laravel-gravatar": "~1.0"        
     },
     "authors": [
         {
