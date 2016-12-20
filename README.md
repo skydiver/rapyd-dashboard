@@ -25,7 +25,8 @@ Skydiver\RapydDashboard\RapydDashboardServiceProvider::class,
 
 **publish the package's assets to public folder***
 ```
-$ php artisan vendor:publish
+$ php artisan vendor:publish --provider="Skydiver\RapydDashboard\RapydDashboardServiceProvider"
+$ php artisan vendor:publish --provider="Zofe\Rapyd\RapydServiceProvider" --tag=assets
 ```
 
 ---
