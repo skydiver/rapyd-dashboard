@@ -49,7 +49,7 @@
 
                 # SHOW ERROR
                 Session::flash('message', array('type' => 'danger', 'msg' => 'No user found.<br>Attempt has been recorded.'));
-                return redirect()->route('login');
+                return redirect()->route('dashboard-login');
 
             }
 
