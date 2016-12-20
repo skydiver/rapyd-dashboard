@@ -4,7 +4,7 @@
 
     use Auth, Config, View;
     use Illuminate\Routing\Controller;
-    use Skydiver\RapydDashboard\Models\LogLogin, Skydiver\RapydDashboard\Models\User;
+    use Skydiver\RapydDashboard\Models\UserLog, Skydiver\RapydDashboard\Models\User;
 
     class ProfileController extends Controller {
 
@@ -28,7 +28,7 @@
             $form->build();
 
             # GET USER LOGINS
-            $logins = LogLogin::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->take(5)->get();
+            $logins = UserLog::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->take(5)->get();
 
             return $form->view('rapyd-dashboard::profile.index', compact('form', 'logins'))
                 ->with('title', 'Edit profile');

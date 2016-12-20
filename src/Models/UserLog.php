@@ -4,9 +4,9 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class LogLogin extends Model {
+    class UserLog extends Model {
 
-        protected $table = 'logs_logins';
+        protected $table = 'users_logs';
 
     }
 

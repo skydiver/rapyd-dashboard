@@ -2,7 +2,7 @@
 
     namespace Skydiver\RapydDashboard\Controllers;
 
-    use Skydiver\RapydDashboard\Models\LogLogin, Skydiver\RapydDashboard\Models\User;
+    use Skydiver\RapydDashboard\Models\UserLog, Skydiver\RapydDashboard\Models\User;
     use Auth, Config, Session, View;
     use Illuminate\Routing\Controller;
     use Illuminate\Http\Request;
@@ -32,7 +32,7 @@
             if($user) {
 
                 // # RECORD LOGIN
-                $log = new LogLogin;
+                $log = new UserLog;
                 $log->user_id = $user->id;
                 $log->email   = $oauth->email;
                 $log->ip      = $request->ip();
@@ -45,7 +45,7 @@
             } else {
 
                 // # RECORD LOGIN
-                $log = new LogLogin;
+                $log = new UserLog;
                 $log->email   = $oauth->email;
                 $log->ip      = $request->ip();
                 $log->result  = 'failed';
