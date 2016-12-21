@@ -1,5 +1,5 @@
 # Rapyd Dashboard
-Backend dashboard for Laravel 5
+Backend dashboard for Laravel 5.3
 
 Rapyd + AdminLTE
 
@@ -23,9 +23,18 @@ Skydiver\RapydDashboard\RapydDashboardServiceProvider::class,
 
 ---
 
-**publish the package's assets to public folder***
+**run the following commands:***
 ```
-$ php artisan vendor:publish
+$ php artisan vendor:publish --provider="Skydiver\RapydDashboard\RapydDashboardServiceProvider"
+$ php artisan vendor:publish --provider="Zofe\Rapyd\RapydServiceProvider" --tag=assets
+$ php artisan migrate
+```
+
+---
+
+Delete folder
+```
+app/Http/Controllers/Auth
 ```
 
 ---
@@ -54,15 +63,15 @@ protected $except = ['dashboard/adminer'];
 
 ---
 
-**app/Http/Middleware/Authenticate.php**
+**app/Http/Middleware/RedirectIfAuthenticated.php**
 
 replace
 ```php
-return redirect()->guest('auth/login');
+return redirect('/home');
 ```
 with
 ```php
-return redirect()->guest('oauth');
+return redirect()->route('dashboard-home');
 ```
 
 ---

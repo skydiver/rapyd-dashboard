@@ -1,5 +1,5 @@
 <header class="main-header">
-    <a href="{{ action('\Skydiver\RapydDashboard\Controllers\DashboardController@getIndex') }}" class="logo">
+    <a href="{{ route('dashboard-home') }}" class="logo">
         <span class="logo-mini"><i class="fa fa-dashboard"></i></span>
         <span class="logo-lg">{{ config('rapyd-dashboard.title') }}</span>
     </a>
@@ -29,7 +29,7 @@
                                 <a href="{{ action('\Skydiver\RapydDashboard\Controllers\ProfileController@getIndex') }}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ action('\Skydiver\RapydDashboard\Controllers\AuthController@getLogout') }}" class="btn btn-default btn-flat">Logout</a>
+                                <a href="{{ route('dashboard-logout') }}" class="btn btn-default btn-flat">Logout</a>
                             </div>
                         </li>
                     </ul>

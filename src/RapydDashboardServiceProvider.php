@@ -2,7 +2,11 @@
 
     namespace Skydiver\RapydDashboard;
 
+    use Illuminate\Foundation\AliasLoader;
     use Illuminate\Support\ServiceProvider;
+    use Laravel\Socialite\Facades\Socialite;
+    use Laravel\Socialite\SocialiteServiceProvider;
+    use Zofe\Rapyd\RapydServiceProvider;
 
     class RapydDashboardServiceProvider extends ServiceProvider {
 
@@ -12,14 +16,14 @@
             //$this->app->alias('rapyd-dashboard', 'Skydiver\RapydDashboard\RapydDashboardBuilder');
 
             # FACADES LOADER
-            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+            $loader = AliasLoader::getInstance();
 
             # LOAD "zofe/rapyd" PACKAGE
-            $this->app->register(\Zofe\Rapyd\RapydServiceProvider::class);
+            $this->app->register(RapydServiceProvider::class);
 
             # LOAD "laravel/socialite" PACKAGE
-            $this->app->register(\Laravel\Socialite\SocialiteServiceProvider::class);
-            $loader->alias('Socialite', \Laravel\Socialite\Facades\Socialite::class);
+            $this->app->register(SocialiteServiceProvider::class);
+            $loader->alias('Socialite', Socialite::class);
 
         }
 
@@ -45,7 +49,7 @@
 
             # PUBLIS ROUTES FILE
             $this->publishes([
-                __DIR__.'/routes-blank.php' => app_path('/Http/routes-rapyd-dashboard.php'),
+                __DIR__.'/routes-blank.php' => base_path('/routes/routes-rapyd-dashboard.php'),
             ], 'routes');
 
             # LOAD ROUTES
@@ -54,7 +58,7 @@
             }
 
             # LOAD APP ROUTES
-            if(file_exists($file = app_path('/Http/routes-rapyd-dashboard.php'))) {
+            if(file_exists($file = base_path('/routes/routes-rapyd-dashboard.php'))) {
                 include $file;
             } else {
                 include __DIR__ . '/routes.php';

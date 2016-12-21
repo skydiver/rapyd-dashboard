@@ -6,8 +6,11 @@
 
 
 @section('content')
+
     @include('rapyd-dashboard::template.session_message')
+
     <div class="google">
-        <a href="{{ action('\Skydiver\RapydDashboard\Controllers\OAuthController@getRedirGoogle') }}"></a>
+        <a href="{{ action('\Skydiver\RapydDashboard\Controllers\AuthController@redirectToGoogle') }}"></a>
     </div>
+
 @stop

@@ -1,68 +1,60 @@
 <?php
 
-namespace Skydiver\RapydDashboard\Controllers;
+    namespace Skydiver\RapydDashboard\Controllers;
 
-    use Skydiver\RapydDashboard\Models\User;
-    use Validator;
+    use Auth, Session;
+    use Socialite;
+    use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
-    use Illuminate\Foundation\Auth\ThrottlesLogins;
-    use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+    use Skydiver\RapydDashboard\Models\UserLog;
+    use Skydiver\RapydDashboard\Models\User;
 
-class AuthController extends Controller
-{
+    class AuthController extends Controller {
 
-    protected $redirectPath = '/dashboard';
+        public function redirectToGoogle() {
+            return Socialite::driver('google')->redirect();
+        }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
+        public function handleGoogleCallback(Request $request) {
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+            # GET OAUTH DATA
+            $oauth = Socialite::driver('google')->user();
 
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'getLogout']);
+            # GET USER
+            $user = User::where('email', $oauth->email)->first();
+
+            # LOGIN OR KICK
+            if($user) {
+
+                # RECORD LOGIN
+                $log = new UserLog;
+                $log->user_id = $user->id;
+                $log->email   = $oauth->email;
+                $log->ip      = $request->ip();
+                $log->result  = 'successful';
+                $log->save();
+
+                # LOGIN USER & REDIRECT
+                Auth::login($user);
+                return redirect()->route('dashboard-home');
+
+            } else {
+
+                # RECORD LOGIN
+                $log = new UserLog;
+                $log->email   = $oauth->email;
+                $log->ip      = $request->ip();
+                $log->result  = 'failed';
+                $log->save();
+
+                # SHOW ERROR
+                Session::flash('message', array('type' => 'danger', 'msg' => 'No user found.<br>Attempt has been recorded.'));
+                return redirect()->route('dashboard-login');
+
+            }
+
+        }
+
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-}
+?>

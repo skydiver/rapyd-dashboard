@@ -3,10 +3,10 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Database\Migrations\Migration;
 
-    class CreateTableLogsLogins extends Migration {
+    class CreateTableUsersLogs extends Migration {
 
         public function up() {
-            Schema::create('logs_logins', function($table) {
+            Schema::create('users_logs', function($table) {
                 $table->increments('id')->unsigned();
                 $table->integer('user_id')->unsigned()->nullable();
                 $table->foreign('user_id')->references('id')->on('users');
@@ -18,7 +18,7 @@
         }
 
         public function down() {
-            Schema::drop('logs_logins');
+            Schema::drop('users_logs');
         }
 
     }
