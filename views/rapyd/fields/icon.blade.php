@@ -1,1 +1,1 @@
-<i class="|field|"></i>
+<div style="width:100%" class="fa fa-fw |field|"></div>
