@@ -15,7 +15,6 @@
             $form->add('name'  , 'Name'  , 'text'  )->rule('required|min:5');
             $form->add('email' , 'E-mail', 'text'  )->rule('required|email');
             $form->add('theme' , 'Theme' , 'select')->options(Config::get('rapyd-dashboard::AdminLTE.themes'))->rule('required');
-            $form->add('avatar', 'Avatar', 'select')->options(array_combine(Config::get('rapyd-dashboard::AdminLTE.avatar'), Config::get('rapyd-dashboard::AdminLTE.avatar')))->rule('required');
             $form->submit('Update Profile');
 
             $form->saved(function () use ($form) {

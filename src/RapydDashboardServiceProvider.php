@@ -6,6 +6,8 @@
     use Illuminate\Support\ServiceProvider;
     use Laravel\Socialite\Facades\Socialite;
     use Laravel\Socialite\SocialiteServiceProvider;
+    use Thomaswelton\LaravelGravatar\Facades\Gravatar;
+    use Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider;
     use Zofe\Rapyd\RapydServiceProvider;
 
     class RapydDashboardServiceProvider extends ServiceProvider {
@@ -24,6 +26,10 @@
             # LOAD "laravel/socialite" PACKAGE
             $this->app->register(SocialiteServiceProvider::class);
             $loader->alias('Socialite', Socialite::class);
+
+            # LOAD "thomaswelton/laravel-gravatar" PACKAGE
+            $this->app->register(LaravelGravatarServiceProvider::class);
+            $loader->alias('Gravatar', Gravatar::class);
 
         }
 

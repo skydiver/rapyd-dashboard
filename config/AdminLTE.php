@@ -2,15 +2,6 @@
 
     return [
 
-        # AVATARS
-        'avatar' => [
-            'avatar.png',
-            'avatar2.png',
-            'avatar3.png',
-            'avatar04.png',
-            'avatar5.png'
-        ],
-
         # THEMES
         'themes' => [
             'skin-blue'         => 'Blue',

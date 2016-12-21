@@ -14,14 +14,14 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('packages/skydiver/rapyd-dashboard/assets/dist/img/' . ((Auth::user()->avatar != '') ? Auth::user()->avatar : 'avatar.png')) }}" class="user-image" alt="User Image">
+                        <img src="{{ Gravatar::src(Auth::user()->email, 250) }}" class="user-image" alt="{{ Auth::user()->name }}">
                         <span class="hidden-xs">&nbsp;&nbsp;{{ Auth::user()->name }}</span>
                         <span>&nbsp;&nbsp;</span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <img src="{{ asset('packages/skydiver/rapyd-dashboard/assets/dist/img/' . ((Auth::user()->avatar != '') ? Auth::user()->avatar : 'avatar.png')) }}" class="img-circle" alt="User Image">
+                            <img src="{{ Gravatar::src(Auth::user()->email, 250) }}" class="img-circle" alt="{{ Auth::user()->name }}">
                             <p>{{ Auth::user()->name }}</p>
                         </li>
                         <li class="user-footer">
