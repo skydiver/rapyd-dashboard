@@ -16,6 +16,7 @@
                     @include('rapyd-dashboard::template.sidebar_item', ['data' => $menu])
                 @endif
             @endforeach
+        @if(Auth::user()->role == 'admin')
             <li class="header">ADMINISTRATION</li>
             <li class="{{ Request::is('dashboard/users*') ? 'active' : '' }}">
                 <a href="{{ action('\Skydiver\RapydDashboard\Controllers\UsersController@index') }}">
@@ -27,6 +28,7 @@
             @foreach(config('rapyd-dashboard.sidebar_extra') as $label => $menu)
                 @include('rapyd-dashboard::template.sidebar_item', ['data' => $menu])
             @endforeach
+        @endif
         </ul>
     </section>
 </aside>

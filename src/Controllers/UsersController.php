@@ -5,6 +5,7 @@
     use Auth, Config, View;
     use Illuminate\Routing\Controller;
     use Illuminate\Validation\Rule;
+    use Skydiver\RapydDashboard\Models\Role;
     use Skydiver\RapydDashboard\Models\User;
     use Zofe\Rapyd\Facades\DataSet, Zofe\Rapyd\Facades\DataForm, Zofe\Rapyd\Facades\DataFilter;
 
@@ -13,7 +14,7 @@
         public function index() {
 
             # GET USERS
-            $query = User::orderBy('name', 'ASC');
+            $query = User::with('role')->orderBy('name', 'ASC');
 
             # RAPYD/DATAFILTER
             $filter = DataFilter::source($query);
@@ -31,9 +32,10 @@
 
             # COLS
             $columns = array(
-                'name'       => 'Name',
-                'email'      => 'Email',
-                'updated_at' => 'Last update',
+                'name'             => 'Name',
+                'email'            => 'Email',
+                'role_description' => 'Role',
+                'updated_at'       => 'Last update',
             );
 
             # TABLE ACTION BUTTONS
@@ -57,9 +59,10 @@
             $form = ($id) ? DataForm::source(User::findOrFail($id)) : DataForm::source(new User);
 
             # PREPARE FORM
-            $form->add('name' , 'Name:' , 'text'  )->rule('required');
-            $form->add('email', 'Email:', 'text'  )->rule('required|email|'.Rule::unique('users')->ignore($id));
-            $form->add('theme', 'Theme:', 'select')->options(Config::get('rapyd-dashboard::AdminLTE.themes'))->rule('required');
+            $form->add('name'   , 'Name:' , 'text'  )->rule('required');
+            $form->add('email'  , 'Email:', 'text'  )->rule('required|email|'.Rule::unique('users')->ignore($id));
+            $form->add('role_id', 'Role:' , 'select')->options(Role::all()->pluck('description', 'id'))->rule('required');
+            $form->add('theme'  , 'Theme:', 'select')->options(Config::get('rapyd-dashboard::AdminLTE.themes'))->rule('required');
             $form->submit('Continue');
 
             # PROCESS FORM

@@ -22,6 +22,11 @@
         # USER PROFILE
         Route::any('profile', '\Skydiver\RapydDashboard\Controllers\ProfileController@getIndex'  );
 
+    });
+
+    # ADMINISTRATOR ROUTES
+    Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth', 'roles'], 'roles' => ['administrator']], function () {
+
         # USERS MANAGEMENT
         Route::get ('users'            , '\Skydiver\RapydDashboard\Controllers\UsersController@index' );
         Route::get ('users/form/{id?}' , '\Skydiver\RapydDashboard\Controllers\UsersController@form'  )->where('id', '[0-9]+');

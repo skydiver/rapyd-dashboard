@@ -14,9 +14,6 @@
 
         public function register() {
 
-            //$this->registerRapydDashboardBuilder();
-            //$this->app->alias('rapyd-dashboard', 'Skydiver\RapydDashboard\RapydDashboardBuilder');
-
             # FACADES LOADER
             $loader = AliasLoader::getInstance();
 
@@ -33,7 +30,10 @@
 
         }
 
-        public function boot() {
+        public function boot(\Illuminate\Routing\Router $router) {
+
+            # REGISTER ROLES MIDDLEWARE
+            $router->middleware('roles', 'Skydiver\RapydDashboard\Middleware\CheckRole');
 
             # PUBLISH CONFIG
             $this->publishes([__DIR__.'/../config/rapyd-dashboard.php' => config_path('rapyd-dashboard.php')], 'config');
@@ -71,18 +71,6 @@
             }
 
         }
-
-/*
-        protected function registerRapydDashboardBuilder() {
-            $this->app->singleton('rapyd-dashboard', function($app) {
-                return new registerRapydDashboardBuilder($app['url']);
-            });
-        }
-
-        public function provides() {
-            return array('rapyd-dashboard');
-        }
-*/
 
     }
 
