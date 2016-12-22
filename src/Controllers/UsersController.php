@@ -18,7 +18,8 @@
             # RAPYD/DATAFILTER
             $filter = DataFilter::source($query);
             $filter->attributes(['id' => 'form-filters']);
-            $filter->add('package_name', 'Package ID', 'text');
+            $filter->add('name' , 'Name' , 'text');
+            $filter->add('email', 'Email', 'text');
             $filter->submit('Filter');
             $filter->reset('Clear');
             $filter->build();
@@ -30,8 +31,8 @@
 
             # COLS
             $columns = array(
-                'name' => 'Name',
-                'email' => 'Email',
+                'name'       => 'Name',
+                'email'      => 'Email',
                 'updated_at' => 'Last update',
             );
 
