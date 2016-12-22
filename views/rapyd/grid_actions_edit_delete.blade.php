@@ -17,7 +17,7 @@
     'delete' => ['btn' => 'danger' , 'label' => 'Delete', 'icon' => 'fa fa-trash-o']
 ] as $option => $params)
     @if(isset($actions[$option]))
-        <a href="{{ isset($actions[$option]['url']) ? $actions[$option]['url'] : Request::url() .'/'.$option.'/' }}{{ (isset($actions['key'])) ? $item->{$actions['key']} : '' }}" class="btn btn-xs btn btn-{{ $params['btn'] }}" {!! isset($actions[$option]['extras']) ? $actions[$option]['extras'] : '' !!}><i class="{{ isset($actions[$option]['icon']) ? $actions[$option]['icon'] : $params['icon'] }}"></i>&nbsp;&nbsp;{{ isset($actions[$option]['label']) ? $actions[$option]['label'] : $params['label'] }}</a>
+        <a href="{{ isset($actions[$option]['url']) ? $actions[$option]['url'] : Request::url() .'/'.$option }}/{{ (isset($actions['key'])) ? $item->{$actions['key']} : '' }}" class="btn btn-xs btn btn-{{ $params['btn'] }}" {!! isset($actions[$option]['extras']) ? $actions[$option]['extras'] : '' !!}><i class="{{ isset($actions[$option]['icon']) ? $actions[$option]['icon'] : $params['icon'] }}"></i>&nbsp;&nbsp;{{ isset($actions[$option]['label']) ? $actions[$option]['label'] : $params['label'] }}</a>
     @endif
 @endforeach
 
