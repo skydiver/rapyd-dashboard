@@ -33,6 +33,12 @@
         Route::post('users/form/{id?}' , '\Skydiver\RapydDashboard\Controllers\UsersController@form'  )->where('id', '[0-9]+');
         Route::get ('users/delete/{id}', '\Skydiver\RapydDashboard\Controllers\UsersController@delete')->where('id', '[0-9]+');
 
+        # ROLES MANAGEMENT
+        Route::get ('roles'            , '\Skydiver\RapydDashboard\Controllers\RolesController@index' );
+        Route::get ('roles/form/{id?}' , '\Skydiver\RapydDashboard\Controllers\RolesController@form'  )->where('id', '[0-9]+');
+        Route::post('roles/form/{id?}' , '\Skydiver\RapydDashboard\Controllers\RolesController@form'  )->where('id', '[0-9]+');
+        Route::get ('roles/delete/{id}', '\Skydiver\RapydDashboard\Controllers\RolesController@delete')->where('id', '[0-9]+');
+
         # ADMINER
         Route::any('adminer', '\Skydiver\LaravelAdminer\AdminerController@index');
 

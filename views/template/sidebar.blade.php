@@ -19,10 +19,10 @@
         @if(Auth::user()->role == 'admin')
             <li class="header">ADMINISTRATION</li>
             <li class="{{ Request::is('dashboard/users*') ? 'active' : '' }}">
-                <a href="{{ action('\Skydiver\RapydDashboard\Controllers\UsersController@index') }}">
-                    <i class="fa fa-user"></i>
-                    <span>Users</span>
-                </a>
+                <a href="{{ action('\Skydiver\RapydDashboard\Controllers\UsersController@index') }}"><i class="fa fa-user"></i>&nbsp;<span>Users</span></a>
+            </li>
+            <li class="{{ Request::is('dashboard/roles*') ? 'active' : '' }}">
+                <a href="{{ action('\Skydiver\RapydDashboard\Controllers\RolesController@index') }}"><i class="fa fa-key" ></i>&nbsp;<span>Roles</span></a>
             </li>
             <li class="header">EXTRAS</li>
             @foreach(config('rapyd-dashboard.sidebar_extra') as $label => $menu)

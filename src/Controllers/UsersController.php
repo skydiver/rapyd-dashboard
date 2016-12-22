@@ -19,8 +19,9 @@
             # RAPYD/DATAFILTER
             $filter = DataFilter::source($query);
             $filter->attributes(['id' => 'form-filters']);
-            $filter->add('name' , 'Name' , 'text');
-            $filter->add('email', 'Email', 'text');
+            $filter->add('name'   , 'Name' , 'text');
+            $filter->add('email'  , 'Email', 'text');
+            $filter->add('role_id', 'Role' , 'select')->options(['' => '(Roles)'] + Role::all()->pluck('description', 'id')->toArray())->rule('required');
             $filter->submit('Filter');
             $filter->reset('Clear');
             $filter->build();
@@ -41,8 +42,8 @@
             # TABLE ACTION BUTTONS
             $actions = array(
                 'key'    => 'id',
-                'new'    => ['url' => action('\Skydiver\RapydDashboard\Controllers\UsersController@form'  )],
-                'edit'   => ['url' => action('\Skydiver\RapydDashboard\Controllers\UsersController@form'  )],
+                'new'    => ['url' => action('\Skydiver\RapydDashboard\Controllers\UsersController@form')],
+                'edit'   => ['url' => action('\Skydiver\RapydDashboard\Controllers\UsersController@form')],
                 'delete' => true,
             );
 
