@@ -52,7 +52,7 @@
 
             @if($set->data->total() >= $set->data->perPage())
                 <div class="box-footer clearfix footer-pagination">
-                    {!! $set->links(new Skydiver\RapydDashboard\Classes\PaginationPresenter($set->data)) !!}
+                    {!! $set->links('rapyd-dashboard::template.paginator') !!}
                 </div>
             @endif
 
