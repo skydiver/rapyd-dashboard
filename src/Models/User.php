@@ -48,6 +48,10 @@
             return $this->role()->getResults()['description'];
         }
 
+        public function getStatusIconAttribute() {
+            return ($this->status == 1) ? 'fa-toggle-on' : 'fa-toggle-off';
+        }
+
         private function getUserRole() {
             return $this->role()->getResults();
         }

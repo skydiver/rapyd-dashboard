@@ -21,6 +21,7 @@
 <body class="hold-transition login-page">
 
     <div class="login-box">
+        @yield('messages')
         <div class="login-box-body">
             @yield('content')
         </div>

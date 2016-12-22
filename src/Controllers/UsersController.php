@@ -36,8 +36,14 @@
                 'name'             => 'Name',
                 'email'            => 'Email',
                 'role_description' => 'Role',
+                'status_icon'      => 'Status',
                 'updated_at'       => 'Last update',
             );
+
+            # CUSTOM FIELDS TYPES
+            $custom_fields = [
+                'status_icon' => View::make('rapyd-dashboard::rapyd.fields.icon'),
+            ];
 
             # TABLE ACTION BUTTONS
             $actions = array(
@@ -48,7 +54,7 @@
             );
 
             # DISPLAY PAGE
-            return View::make('rapyd-dashboard::rapyd.grid', compact('filter', 'set', 'columns', 'actions'))
+            return View::make('rapyd-dashboard::rapyd.grid', compact('filter', 'set', 'columns', 'custom_fields', 'actions'))
                 ->withTitle('Users')
                 ->withTotal($set->totalRows());
 
@@ -60,10 +66,11 @@
             $form = ($id) ? DataForm::source(User::findOrFail($id)) : DataForm::source(new User);
 
             # PREPARE FORM
-            $form->add('name'   , 'Name:' , 'text'  )->rule('required');
-            $form->add('email'  , 'Email:', 'text'  )->rule('required|email|'.Rule::unique('users')->ignore($id));
-            $form->add('role_id', 'Role:' , 'select')->options(Role::all()->pluck('description', 'id'))->rule('required');
-            $form->add('theme'  , 'Theme:', 'select')->options(Config::get('rapyd-dashboard::AdminLTE.themes'))->rule('required');
+            $form->add('name'   , 'Name:'  , 'text'  )->rule('required');
+            $form->add('email'  , 'Email:' , 'text'  )->rule('required|email|'.Rule::unique('users')->ignore($id));
+            $form->add('role_id', 'Role:'  , 'select')->options(Role::all()->pluck('description', 'id'))->rule('required');
+            $form->add('theme'  , 'Theme:' , 'select')->options(Config::get('rapyd-dashboard::AdminLTE.themes'))->rule('required');
+            $form->add('status' , 'Status:', 'checkbox');
             $form->submit('Continue');
 
             # PROCESS FORM

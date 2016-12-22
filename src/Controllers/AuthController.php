@@ -24,7 +24,7 @@
             $user = User::where('email', $oauth->email)->first();
 
             # LOGIN OR KICK
-            if($user) {
+            if($user && $user->status == 1) {
 
                 # RECORD LOGIN
                 $log = new UserLog;
@@ -44,11 +44,14 @@
                 $log = new UserLog;
                 $log->email   = $oauth->email;
                 $log->ip      = $request->ip();
-                $log->result  = 'failed';
+                $log->result  = ($user && $user->status == 0) ? 'disabled' : 'failed';
                 $log->save();
 
+                # ERROR MESSAGE
+                $msg = ($user && $user->status == 0) ? 'User disabled.' : 'No user found.';
+
                 # SHOW ERROR
-                Session::flash('message', array('type' => 'danger', 'msg' => 'No user found.<br>Attempt has been recorded.'));
+                Session::flash('message', array('type' => 'danger', 'msg' => $msg));
                 return redirect()->route('dashboard-login');
 
             }
