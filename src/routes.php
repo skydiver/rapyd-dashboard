@@ -33,6 +33,9 @@
         Route::post('users/form/{id?}' , '\Skydiver\RapydDashboard\Controllers\UsersController@form'  )->where('id', '[0-9]+');
         Route::get ('users/delete/{id}', '\Skydiver\RapydDashboard\Controllers\UsersController@delete')->where('id', '[0-9]+');
 
+        # USERS LOGS
+        Route::get ('users/logs'       , '\Skydiver\RapydDashboard\Controllers\UsersLogsController@index' );
+
         # ROLES MANAGEMENT
         Route::get ('roles'            , '\Skydiver\RapydDashboard\Controllers\RolesController@index' );
         Route::get ('roles/form/{id?}' , '\Skydiver\RapydDashboard\Controllers\RolesController@form'  )->where('id', '[0-9]+');
